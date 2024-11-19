@@ -6,13 +6,11 @@
     <title>SVG a PBI</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* General Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -23,52 +21,39 @@
         .container {
             background: #ffffff;
             color: #333;
-            padding: 30px;
+            padding: 20px;
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 600px;
+            max-width: 400px;
             box-sizing: border-box;
             text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: #1e3c72;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .upload-section {
             background: #f9f9f9;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         input[type="file"] {
-            padding: 10px;
+            padding: 8px;
             border: 2px dashed #1e3c72;
             background: #ffffff;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #1e3c72;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            max-width: 500px;
         }
 
         input[type="file"]:hover {
@@ -78,11 +63,10 @@
 
         .preview-box {
             background: #f9f9f9;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            width: calc(100% - 40px);
+            margin-bottom: 15px;
             min-height: 100px;
             display: flex;
             justify-content: center;
@@ -92,47 +76,42 @@
 
         textarea {
             background: #f9f9f9;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            width: calc(100% - 40px);
-            height: 150px;
-            font-size: 1rem;
+            margin-bottom: 15px;
+            width: 100%;
+            height: 120px;
+            font-size: 0.9rem;
             resize: none;
             color: #333;
-            overflow-y: auto;
         }
 
         .actions {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 10px;
-            margin: 20px 0 30px;
+            justify-content: center;
         }
 
         button {
+            flex: 1 1 calc(50% - 10px);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
+            gap: 8px;
+            padding: 10px;
             border: none;
             border-radius: 8px;
             background-color: #1e3c72;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
             background-color: #2a5298;
-            transform: scale(1.05);
-        }
-
-        button i {
-            font-size: 1.2rem;
         }
 
         #resetButton {
@@ -144,9 +123,9 @@
         }
 
         footer {
-            margin-top: 20px;
+            margin-top: 15px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #666;
         }
 
@@ -159,6 +138,26 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Estilo Responsivo */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            input[type="file"] {
+                font-size: 0.8rem;
+            }
+
+            button {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+
+            textarea {
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -167,16 +166,14 @@
         <div class="upload-section">
             <input type="file" id="fileInput" accept=".svg">
         </div>
-        <div class="output-section">
-            <div class="preview-box" id="svgPreview">Aquí aparecerá la vista previa de tu SVG</div>
-            <div class="actions">
-                <button id="convertButton"><i class="fas fa-sync-alt"></i> Convertir</button>
-                <button id="copyButton"><i class="fas fa-copy"></i> Copiar</button>
-                <button id="downloadButton"><i class="fas fa-download"></i> Descargar</button>
-                <button id="resetButton"><i class="fas fa-trash-alt"></i> Reiniciar</button>
-            </div>
-            <textarea id="svgCode" rows="10" readonly></textarea>
+        <div class="preview-box" id="svgPreview">Aquí aparecerá la vista previa de tu SVG</div>
+        <div class="actions">
+            <button id="convertButton"><i class="fas fa-sync-alt"></i> Convertir</button>
+            <button id="copyButton"><i class="fas fa-copy"></i> Copiar</button>
+            <button id="downloadButton"><i class="fas fa-download"></i> Descargar</button>
+            <button id="resetButton"><i class="fas fa-trash-alt"></i> Reiniciar</button>
         </div>
+        <textarea id="svgCode" rows="10" readonly></textarea>
     </div>
     <footer>
         Aplicación creada por <a href="#" target="_blank">Charlie Bérgamo</a>
